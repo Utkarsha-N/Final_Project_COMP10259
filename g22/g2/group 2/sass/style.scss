@@ -1,0 +1,330 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700;800;900&display=swap');
+
+$primary-color: yellow;
+$secondary-color: #000000;
+$background-color: red;
+$text-color: #f1eaea;
+$dark-background-color: #020a1d;
+$accent-color: white;
+
+@mixin align-items-center {
+  align-items: center;
+}
+@mixin justify-content-center {
+    justify-content: center;
+  }
+@mixin justify-content-between {
+  justify-content: space-between;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+$container-max-width: 100%;
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+body {
+  margin: 0;
+  line-height: 1.5;
+  background-color: $background-color;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 400;
+}
+
+.container {
+  max-width: $container-max-width;
+  margin: auto;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.header {
+  position: relative;
+  left: 0;
+  top: 0;
+  width: 100%;
+  z-index: 99;
+  transition: all 2s ease-in;
+  @include justify-content-center;
+  animation: slideIn 2s ease-in-out;
+  
+  &.fixed {
+    background-color: $secondary-color;
+    position: fixed;
+
+    .fish-name a {
+      color: $primary-color;
+      @include justify-content-center;
+    }
+
+    .nav-toggle {
+      border-color: $secondary-color;
+    }
+
+    .nav-toggle span,
+    .nav-toggle span:before,
+    .nav-toggle span:after {
+      background-color: $secondary-color;
+    }
+  }
+  
+  .fish-name {
+    padding: 0 15px;
+    margin-left: 25%;
+    margin-right: 25%;
+    a {
+      text-decoration: none;
+      font-size: 30px;
+      color: $secondary-color;
+      text-transform: uppercase;
+      font-weight: 900;
+      letter-spacing: 2px;
+      transition: all 0.5s ease;
+      @include justify-content-center;
+      &:hover {
+        color: $primary-color;
+        @include justify-content-center;
+      }
+    }
+  }
+  
+  .nav-toggle {
+    width: 40px;
+    height: 34px;
+    border: 1px solid $primary-color;
+    border-radius: 3px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.5s ease;
+    display: none;
+    &:hover {
+      background-color: $primary-color;
+      span, span:before, span:after {
+        background-color: $background-color;
+      }
+    }
+    span {
+      height: 1px;
+      display: block;
+      width: 16px;
+      background-color: $primary-color;
+      position: relative;
+      transition: all 0.5s ease;
+      &:before, &:after {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 1px;
+        width: 100%;
+        background-color: $primary-color;
+        transition: all 0.5s ease;
+      }
+      &:before {
+        transform: translateY(-6px);
+      }
+      &:after {
+        transform: translateY(6px);
+      }
+    }
+  }
+  
+  .nav {
+    padding: 0 15px;
+    background-color: $dark-background-color;
+    width: 100%;
+    
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      
+      li {
+        display: inline-block;
+        margin-left: 30px;
+        
+        a {
+          text-decoration: none;
+          font-size: 16px;
+          font-weight: 600;
+          color: $primary-color;
+          padding: 25px 0;
+          display: block;
+          transition: all 0.5s ease;
+          &:hover {
+            color: $accent-color;
+          }
+        }
+      }
+    }
+  }
+}
+
+.home-section {
+  margin-top: 10%;
+  padding: 10%;
+  min-height: 100vh;
+  color: $text-color;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  z-index: 1;
+  padding: 0 15px;
+  
+  h2 {
+    width: 40%;
+    line-height: 80px;
+    color: $secondary-color;
+  }
+  
+  img {
+    width: 55%;
+    float: right;
+    margin-left: 42%;
+    position: absolute;
+    margin-top: -35%;
+  }
+  
+  p {
+    text-align: center;
+    font-size: larger;
+    margin: 20px;
+  }
+}
+
+.about-section {
+  padding: 10px 20px 20px;
+  
+  h1 {
+    text-align: center;
+    background-color: $secondary-color;
+    color: $primary-color;
+  }
+  
+  p {
+    text-align: center;
+    font-size: larger;
+    margin: 20px;
+  }
+}
+
+.predators-section,
+.gallery-section,
+.count-section {
+  padding: 10px 20px 20px;
+  
+  h1 {
+    text-align: center;
+    background-color: $secondary-color;
+    color: $primary-color;
+  }
+  
+  p {
+    text-align: center;
+    font-size: larger;
+    margin: 20px;
+  }
+}
+
+.gallery-section {
+  h2 {
+    text-align: center;
+  }
+  
+  div img {
+    width: 48%;
+    height: 50%;
+    padding-left: 4%;
+  }
+  
+  video {
+    padding-left: 9%;
+  }
+}
+
+.count-section {
+  h2 {
+    text-align: center;
+  }
+  
+  h1 {
+    text-align: center;
+    background-color: $secondary-color;
+    color: $primary-color;
+  }
+}
+
+.contact-section {
+  h1 {
+    text-align: center;
+    background-color: $secondary-color;
+    color: $primary-color;
+  }
+  
+  form {
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      color: #555;
+    }
+    
+    input, textarea {
+      width: 100%;
+      padding: 0.5rem;
+      margin-bottom: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    
+    button {
+      background-color: red;
+      color: #fff;
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      &:hover {
+        background-color: #555;
+      }
+    }
+  }
+}
+
+footer {
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  padding: 1rem;
+  
+  p {
+    margin: 0;
+  }
+}
+
+.honesty {
+  margin-top: 80px;
+  text-align: center;
+  
+  ul, ol {
+    list-style: none;
+  }
+  
+  a {
+    color: teal;
+  }
+}
